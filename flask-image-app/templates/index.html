@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Processing Steps</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .image-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        img {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            margin-top: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="file"] {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload dan Lihat Proses Citra</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if original_filename %}
+        <div class="image-section">
+            <h2>Gambar Asli</h2>
+            <img src="{{ url_for('static', filename=original_filename) }}" alt="Gambar Asli">
+        </div>
+    {% endif %}
+
+    {% if step_images %}
+    <div class="image-section">
+        <h2>Grayscale</h2>
+        <img src="{{ url_for('static', filename=step_images.grayscale) }}">
+    </div>
+    <div class="image-section">
+        <h2>Setelah Kontras</h2>
+        <img src="{{ url_for('static', filename=step_images.contrast) }}">
+    </div>
+    <div class="image-section">
+        <h2>Gaussian Blur</h2>
+        <img src="{{ url_for('static', filename=step_images.blur) }}">
+    </div>
+    <div class="image-section">
+        <h2>Crop</h2>
+        <img src="{{ url_for('static', filename=step_images.crop) }}">
+    </div>
+    <div class="image-section">
+        <h2>Mode Portrait</h2>
+        <img src="{{ url_for('static', filename=step_images.portrait) }}">
+    </div>
+{% endif %}
+
+</body>
+</html>
