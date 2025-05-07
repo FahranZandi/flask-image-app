@@ -1,0 +1,9 @@
+# Abaikan folder virtual environment
+venv/
+
+# Abaikan file Python cache
+__pycache__/
+*.pyc
+
+# Abaikan file dan folder sementara VS Code
+.vscode/
