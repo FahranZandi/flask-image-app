@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Silakan Upload</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Didact+Gothic&display=swap');
 
         body {
             margin: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Didact Gothic', sans-serif;
             background-color: #1e1e1e;
             color: white;
         }
@@ -20,12 +20,13 @@
         }
 
         header h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cardo', serif;
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
 
         header p {
+            font-family: 'Didact Gothic', sans-serif;
             font-size: 0.9rem;
             color: #ccc;
         }
@@ -34,17 +35,19 @@
             position: relative;
             text-align: center;
             color: white;
+            overflow: hidden;
         }
 
         .hero img {
             width: 100%;
-            height: auto;
+            height: 820px;
+            object-fit: cover;
             filter: brightness(0.8);
         }
 
         .hero h2 {
             font-size: 4rem;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cardo', serif;
             position: absolute;
             top: 30%;
             left: 50%;
@@ -58,6 +61,7 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 1rem;
+            font-family: 'Didact Gothic', sans-serif;
             color: #fff;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
         }
@@ -71,6 +75,7 @@
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
             text-align: center;
+            font-family: 'Didact Gothic', sans-serif;
         }
 
         .upload-container h3 {
@@ -90,6 +95,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-family: 'Didact Gothic', sans-serif;
         }
 
         button:hover {
