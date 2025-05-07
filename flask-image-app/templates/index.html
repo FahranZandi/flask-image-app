@@ -1,113 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Image Processing Steps</title>
     <meta charset="UTF-8">
+    <title>Silakan Upload</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            background-color: #1e1e1e;
+            color: white;
         }
 
-        h1, h2 {
-            color: #333;
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #2a2a2a;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+            filter: brightness(0.8);
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero .author {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .upload-container {
+            background-color: #fff;
+            color: black;
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+            text-align: center;
+        }
+
+        .upload-container h3 {
+            margin-bottom: 1rem;
+        }
+
+        input[type="file"] {
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background-color: #f05454;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c0392b;
         }
 
         .image-section {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 30px;
+            margin: 2rem auto;
+            background-color: #2a2a2a;
+            padding: 1rem;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            width: 100%;
             max-width: 500px;
             text-align: center;
         }
 
-        img {
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            margin-top: 10px;
+        .image-section img {
             max-width: 100%;
-            height: auto;
+            border-radius: 10px;
         }
 
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .animated-entry {
+            animation: fadeIn 1s ease-out;
         }
 
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        input[type="file"] {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <h1>Upload dan Lihat Proses Citra</h1>
+    <header>
+        <h1>silahkan mencoba laman ini</h1>
+        <p>Silahkan dicoba alat proses citra digital ini</p>
+    </header>
 
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <button type="submit">Upload</button>
-    </form>
+    <section class="hero">
+        <img src="{{ url_for('static', filename='Asset/Gambar1.jpg') }}" alt="Pantai">
+        <h2>Silahkan Upload</h2>
+        <div class="author">Zandi</div>
+    </section>
+
+    <section class="upload-container animated-entry">
+        <h3>Silahkan unggah File</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <br>
+            <button type="submit">Upload</button>
+        </form>
+    </section>
 
     {% if original_filename %}
-        <div class="image-section">
-            <h2>Gambar Asli</h2>
-            <img src="{{ url_for('static', filename=original_filename) }}" alt="Gambar Asli">
-        </div>
+    <div class="image-section animated-entry">
+        <h2>Gambar Asli</h2>
+        <img src="{{ url_for('static', filename=original_filename) }}" alt="Gambar Asli">
+    </div>
     {% endif %}
 
     {% if step_images %}
-    <div class="image-section">
-        <h2>Grayscale</h2>
-        <img src="{{ url_for('static', filename=step_images.grayscale) }}">
-    </div>
-    <div class="image-section">
-        <h2>Setelah Kontras</h2>
-        <img src="{{ url_for('static', filename=step_images.contrast) }}">
-    </div>
-    <div class="image-section">
-        <h2>Gaussian Blur</h2>
-        <img src="{{ url_for('static', filename=step_images.blur) }}">
-    </div>
-    <div class="image-section">
-        <h2>Crop</h2>
-        <img src="{{ url_for('static', filename=step_images.crop) }}">
-    </div>
-    <div class="image-section">
-        <h2>Mode Portrait</h2>
-        <img src="{{ url_for('static', filename=step_images.portrait) }}">
-    </div>
-{% endif %}
-
+        <div class="image-section animated-entry">
+            <h2>Grayscale</h2>
+            <img src="{{ url_for('static', filename=step_images.grayscale) }}">
+        </div>
+        <div class="image-section animated-entry">
+            <h2>Setelah Kontras</h2>
+            <img src="{{ url_for('static', filename=step_images.contrast) }}">
+        </div>
+        <div class="image-section animated-entry">
+            <h2>Gaussian Blur</h2>
+            <img src="{{ url_for('static', filename=step_images.blur) }}">
+        </div>
+        <div class="image-section animated-entry">
+            <h2>Crop</h2>
+            <img src="{{ url_for('static', filename=step_images.crop) }}">
+        </div>
+        <div class="image-section animated-entry">
+            <h2>Mode Portrait</h2>
+            <img src="{{ url_for('static', filename=step_images.portrait) }}">
+        </div>
+    {% endif %}
 </body>
 </html>

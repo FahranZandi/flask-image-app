@@ -7,3 +7,12 @@ __pycache__/
 
 # Abaikan file dan folder sementara VS Code
 .vscode/
+
+
+# Abaikan semua file gambar di dalam folder static/uploads
+/flask-image-app/static/uploads/*.png
+/flask-image-app/static/uploads/*.jpg
+/flask-image-app/static/uploads/*.jpeg
+/flask-image-app/static/uploads/*.gif
+/flask-image-app/static/uploads/*.webp
+/flask-image-app/static/uploads/*.bmp
